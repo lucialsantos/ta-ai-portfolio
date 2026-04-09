@@ -1,0 +1,160 @@
+{
+  "phases": [
+    {
+      "id": "week-0",
+      "name": "Launch Pad",
+      "theme": "Build the portfolio site, learn git",
+      "status": "in_progress",
+      "duration": "1 week",
+      "startedAt": "2026-04-09",
+      "completedAt": null,
+      "mindsetShift": "From consumer to creator — the first thing I ship is the place where everything else will live.",
+      "projects": [
+        {
+          "name": "Portfolio Site",
+          "description": "Next.js portfolio deployed on Vercel — the foundation for everything.",
+          "status": "in_progress",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "phase-1",
+      "name": "The Language of Production",
+      "theme": "Specs, user stories, PRDs — writing things engineers actually build from",
+      "status": "not_started",
+      "duration": "3 weeks",
+      "startedAt": null,
+      "completedAt": null,
+      "mindsetShift": "My clarity is the product. A spec is a contract between someone who understands the problem and someone who will solve it.",
+      "projects": [
+        {
+          "name": "AI-Powered CV Screening — Feature Spec",
+          "description": "Full spec for adding AI candidate screening to Factorial's ATS. User stories, acceptance criteria, edge cases.",
+          "status": "not_started",
+          "url": null
+        },
+        {
+          "name": "Interview Scheduling 2.0 — PRD",
+          "description": "One-page PRD for improving scheduling in the ATS. Problem, options, recommendation, success metrics.",
+          "status": "not_started",
+          "url": null
+        },
+        {
+          "name": "Talent Pool Revival — Integration Spec",
+          "description": "Spec for re-engaging 3+ year old candidates against current open roles. Data model, matching logic, GDPR constraints.",
+          "status": "not_started",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "phase-2",
+      "name": "First AI Tools",
+      "theme": "Prompt engineering + deployed AI applications",
+      "status": "not_started",
+      "duration": "3 weeks",
+      "startedAt": null,
+      "completedAt": null,
+      "mindsetShift": "I don't need to understand every line of code. I need to understand what I'm building, why, and how to direct AI to build it with me.",
+      "projects": [
+        {
+          "name": "JD Bias Detector",
+          "description": "Paste a job description → get analysis of biased language, gendered terms, and improvement suggestions.",
+          "status": "not_started",
+          "url": null
+        },
+        {
+          "name": "CV + JD Matcher",
+          "description": "Paste a CV and a JD → get a match score (0–100) with gaps and strengths explained.",
+          "status": "not_started",
+          "url": null
+        },
+        {
+          "name": "Interview Question Generator",
+          "description": "Input role + seniority + key skills → structured interview questions tailored to the role.",
+          "status": "not_started",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "phase-3",
+      "name": "The Plumbing Layer",
+      "theme": "APIs, webhooks, and how systems talk to each other",
+      "status": "not_started",
+      "duration": "3 weeks",
+      "startedAt": null,
+      "completedAt": null,
+      "mindsetShift": "I don't need to build the API. I need to understand it well enough to spec integrations engineers can build — and to recognize when a trade-off should matter to me.",
+      "projects": [
+        {
+          "name": "ATS API Explorer",
+          "description": "Postman deep-dive into Greenhouse ATS sandbox API. Documented findings: what data lives in an ATS, what's missing.",
+          "status": "not_started",
+          "url": null
+        },
+        {
+          "name": "Candidate Journey — Webhook Architecture",
+          "description": "System diagram: candidate applies → auto-email → TA notified if qualified → hiring manager weekly digest.",
+          "status": "not_started",
+          "url": null
+        },
+        {
+          "name": "n8n Automation: Final Round Trigger",
+          "description": "When candidate moves to Final Round → calendar hold created → Slack message sent to TA coordinator.",
+          "status": "not_started",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "phase-4",
+      "name": "Agents & RAG",
+      "theme": "AI that knows things — retrieval-augmented generation and multi-step agents",
+      "status": "not_started",
+      "duration": "3 weeks",
+      "startedAt": null,
+      "completedAt": null,
+      "mindsetShift": "AI without context is guessing. AI with the right context is leverage.",
+      "projects": [
+        {
+          "name": "TA Handbook Assistant",
+          "description": "RAG chatbot that answers questions about a TA handbook. Built with Vercel AI SDK + Supabase vector store.",
+          "status": "not_started",
+          "url": null
+        },
+        {
+          "name": "Candidate Screener Agent",
+          "description": "Multi-step agent: takes a JD → reads CVs → scores each → writes recruiter recommendation.",
+          "status": "not_started",
+          "url": null
+        },
+        {
+          "name": "Human-in-the-Loop Design",
+          "description": "Human review gate for the candidate screener. Spec + UI design for the approval step.",
+          "status": "not_started",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "phase-5",
+      "name": "The Capstone",
+      "theme": "Build one complete product",
+      "status": "not_started",
+      "duration": "2 weeks",
+      "startedAt": null,
+      "completedAt": null,
+      "mindsetShift": "This is mine. I specced it, I built it, I can demo it in three minutes.",
+      "projects": [
+        {
+          "name": "TA AI Assistant v1.0",
+          "description": "Full product: input a JD + upload CVs → match scores + gap analysis + draft outreach for top candidate. Deployed on Vercel.",
+          "status": "not_started",
+          "url": null
+        }
+      ]
+    }
+  ]
+}
