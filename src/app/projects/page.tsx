@@ -3,7 +3,7 @@ import { getBootcampProgress } from "@/lib/bootcamp";
 import { PhaseBadge } from "@/components/phase-badge";
 
 export const metadata = {
-  title: "Projects — Lucía Santos",
+  title: "Projects — Lucía Lorenzo Santos",
   description: "Real AI tools built for TA Operations. All deployed. All in public.",
 };
 
@@ -24,17 +24,25 @@ export default function ProjectsPage() {
   const completedProjects = allProjects.filter((p) => p.status === "completed");
   const inProgressProjects = allProjects.filter((p) => p.status === "in_progress");
 
+  // suppress unused var lint
+  void completedProjects;
+
   return (
     <div className="mx-auto max-w-4xl px-6 py-20">
 
       {/* Header */}
       <section className="mb-16">
-        <p className="font-[family-name:var(--font-geist-mono)] text-violet-400 text-xs mb-4 tracking-wider uppercase">
+        <p
+          className="font-[family-name:var(--font-geist-mono)] text-xs mb-4 tracking-wider uppercase"
+          style={{ color: "#E8421A" }}
+        >
           real tools · real problems · free to use
         </p>
-        <h1 className="text-4xl font-bold text-zinc-100 mb-4">Projects</h1>
-        <p className="text-zinc-400 max-w-2xl leading-relaxed">
-          Everything I build during the bootcamp lives here once it&apos;s
+        <h1 className="text-4xl font-bold mb-4" style={{ color: "#2D0810" }}>
+          Projects
+        </h1>
+        <p className="max-w-2xl leading-relaxed" style={{ color: "#7B3045" }}>
+          Everything I build during the depth program lives here once it&apos;s
           deployed. No toy examples — each project solves an actual problem in
           TA Operations.
         </p>
@@ -43,7 +51,10 @@ export default function ProjectsPage() {
       {/* Live projects */}
       {liveProjects.length > 0 ? (
         <section className="mb-16">
-          <h2 className="text-xs font-[family-name:var(--font-geist-mono)] text-zinc-500 tracking-wider uppercase mb-6">
+          <h2
+            className="text-xs font-[family-name:var(--font-geist-mono)] tracking-wider uppercase mb-6"
+            style={{ color: "#B98D97" }}
+          >
             live
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -53,20 +64,24 @@ export default function ProjectsPage() {
                 href={project.url!}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block border border-zinc-800 rounded-xl p-5 hover:border-violet-500/40 hover:bg-violet-500/5 transition-all group"
+                className="block rounded-xl p-5 transition-all group"
+                style={{ border: "1px solid #DECCBF", backgroundColor: "#FFFFFF" }}
               >
                 <div className="flex items-start justify-between gap-2 mb-2">
-                  <h3 className="text-sm font-semibold text-zinc-100 group-hover:text-violet-300 transition-colors">
+                  <h3 className="text-sm font-semibold" style={{ color: "#2D0810" }}>
                     {project.name}
                   </h3>
-                  <span className="text-zinc-500 group-hover:text-violet-400 transition-colors text-sm">
+                  <span className="text-sm transition-colors" style={{ color: "#E8421A" }}>
                     ↗
                   </span>
                 </div>
-                <p className="text-xs text-zinc-500 leading-relaxed mb-3">
+                <p className="text-xs leading-relaxed mb-3" style={{ color: "#9E5A6A" }}>
                   {project.description}
                 </p>
-                <span className="font-[family-name:var(--font-geist-mono)] text-xs text-zinc-600">
+                <span
+                  className="font-[family-name:var(--font-geist-mono)] text-xs"
+                  style={{ color: "#C9A0A8" }}
+                >
                   {project.phaseName}
                 </span>
               </a>
@@ -78,22 +93,29 @@ export default function ProjectsPage() {
       {/* In progress */}
       {inProgressProjects.length > 0 && (
         <section className="mb-16">
-          <h2 className="text-xs font-[family-name:var(--font-geist-mono)] text-zinc-500 tracking-wider uppercase mb-6">
+          <h2
+            className="text-xs font-[family-name:var(--font-geist-mono)] tracking-wider uppercase mb-6"
+            style={{ color: "#B98D97" }}
+          >
             in progress
           </h2>
           <div className="space-y-3">
             {inProgressProjects.map((project) => (
               <div
                 key={project.name}
-                className="border border-violet-500/20 rounded-xl p-4 bg-violet-500/5"
+                className="rounded-xl p-4"
+                style={{
+                  border: "1px solid rgba(232, 66, 26, 0.25)",
+                  backgroundColor: "#FDE9E3",
+                }}
               >
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-violet-400 text-xs">◎</span>
-                  <h3 className="text-sm font-medium text-zinc-200">
+                  <span style={{ color: "#E8421A", fontSize: "0.75rem" }}>◎</span>
+                  <h3 className="text-sm font-medium" style={{ color: "#2D0810" }}>
                     {project.name}
                   </h3>
                 </div>
-                <p className="text-xs text-zinc-500 leading-relaxed ml-4">
+                <p className="text-xs leading-relaxed ml-4" style={{ color: "#9E5A6A" }}>
                   {project.description}
                 </p>
               </div>
@@ -104,18 +126,25 @@ export default function ProjectsPage() {
 
       {/* Empty state */}
       {liveProjects.length === 0 && inProgressProjects.length === 0 && (
-        <section className="mb-16 border border-zinc-800 rounded-xl p-12 text-center">
-          <p className="text-zinc-600 text-sm font-[family-name:var(--font-geist-mono)] mb-2">
+        <section
+          className="mb-16 rounded-xl p-12 text-center"
+          style={{ border: "1px solid #DECCBF" }}
+        >
+          <p
+            className="text-sm font-[family-name:var(--font-geist-mono)] mb-2"
+            style={{ color: "#C9A0A8" }}
+          >
             nothing deployed yet
           </p>
-          <p className="text-zinc-500 text-sm max-w-sm mx-auto">
-            Phase 2 is where the first tools go live. Check back then — or
-            follow along on{" "}
+          <p className="text-sm max-w-sm mx-auto" style={{ color: "#9E5A6A" }}>
+            The first tools go live in Phase 3. Check back then — or follow
+            along on{" "}
             <a
               href="https://github.com/lucialsantos"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-violet-400 hover:underline"
+              className="hover:underline"
+              style={{ color: "#E8421A" }}
             >
               GitHub
             </a>
@@ -123,16 +152,20 @@ export default function ProjectsPage() {
           </p>
           <Link
             href="/bootcamp"
-            className="inline-flex items-center gap-2 mt-6 text-xs font-[family-name:var(--font-geist-mono)] text-zinc-500 hover:text-violet-400 transition-colors"
+            className="inline-flex items-center gap-2 mt-6 text-xs font-[family-name:var(--font-geist-mono)] transition-colors"
+            style={{ color: "#9E5A6A" }}
           >
             see what&apos;s being built →
           </Link>
         </section>
       )}
 
-      {/* Coming soon — phases not started */}
+      {/* Coming soon */}
       <section>
-        <h2 className="text-xs font-[family-name:var(--font-geist-mono)] text-zinc-500 tracking-wider uppercase mb-6">
+        <h2
+          className="text-xs font-[family-name:var(--font-geist-mono)] tracking-wider uppercase mb-6"
+          style={{ color: "#B98D97" }}
+        >
           coming
         </h2>
         <div className="space-y-2">
@@ -143,12 +176,15 @@ export default function ProjectsPage() {
             .map((phase) => (
               <div
                 key={phase.id}
-                className="flex items-center justify-between py-3 px-4 rounded-lg border border-zinc-900"
+                className="flex items-center justify-between py-3 px-4 rounded-lg"
+                style={{ border: "1px solid #EDE0CC" }}
               >
                 <div>
-                  <span className="text-sm text-zinc-500">{phase.name}</span>
-                  <span className="text-zinc-700 mx-2">·</span>
-                  <span className="text-xs text-zinc-700">
+                  <span className="text-sm" style={{ color: "#7B3045" }}>
+                    {phase.name}
+                  </span>
+                  <span style={{ color: "#C9A0A8", margin: "0 0.5rem" }}>·</span>
+                  <span className="text-xs" style={{ color: "#C9A0A8" }}>
                     {phase.projects.filter((p) => p.status === "not_started").length} projects
                   </span>
                 </div>

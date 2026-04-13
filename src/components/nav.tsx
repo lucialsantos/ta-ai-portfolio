@@ -2,38 +2,35 @@ import Link from "next/link";
 
 export function Nav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-sm">
-      <div className="mx-auto max-w-4xl px-6 flex items-center justify-between h-14">
+    <header
+      className="sticky top-0 z-50 backdrop-blur-sm"
+      style={{
+        borderBottom: "1px solid #F0D5CC",
+        backgroundColor: "rgba(254, 246, 242, 0.94)",
+      }}
+    >
+      <div className="mx-auto max-w-5xl px-6 flex items-center justify-between h-14">
         <Link
           href="/"
-          className="font-[family-name:var(--font-geist-mono)] text-sm font-medium text-zinc-100 hover:text-violet-400 transition-colors"
+          className="font-mono text-sm font-bold tracking-tight transition-opacity hover:opacity-70"
+          style={{ color: "#1A1020" }}
         >
-          lucía santos
+          lucía lorenzo santos
         </Link>
-        <nav className="flex items-center gap-6 text-sm text-zinc-400">
+        <nav className="flex items-center gap-6 font-mono text-xs" style={{ color: "#6C5B7B" }}>
           <Link
             href="/bootcamp"
-            className="hover:text-zinc-100 transition-colors"
+            className="transition-colors hover:text-[#1A1020]"
+            style={{ color: "inherit" }}
           >
             bootcamp
-          </Link>
-          <Link
-            href="/projects"
-            className="hover:text-zinc-100 transition-colors"
-          >
-            projects
-          </Link>
-          <Link
-            href="/about"
-            className="hover:text-zinc-100 transition-colors"
-          >
-            about
           </Link>
           <a
             href="https://github.com/lucialsantos"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-zinc-100 transition-colors"
+            className="px-3 py-1.5 rounded-full font-semibold transition-opacity hover:opacity-80"
+            style={{ backgroundColor: "#355C7D", color: "#FFFFFF" }}
           >
             github ↗
           </a>
