@@ -1,156 +1,203 @@
 import Link from "next/link";
-import { getBootcampProgress, getPhaseStats } from "@/lib/bootcamp";
-import { PhaseBadge, ProjectDot } from "@/components/phase-badge";
+import { getBootcampProgress, getTaskStats } from "@/lib/bootcamp";
+
+const PHASE_COLORS = [
+  { bg: "#F8B195", text: "#1A1020", sub: "rgba(26,16,32,0.55)" },
+  { bg: "#F67280", text: "#FFFFFF", sub: "rgba(255,255,255,0.65)" },
+  { bg: "#C06C84", text: "#FFFFFF", sub: "rgba(255,255,255,0.60)" },
+  { bg: "#6C5B7B", text: "#FFFFFF", sub: "rgba(255,255,255,0.60)" },
+  { bg: "#355C7D", text: "#FFFFFF", sub: "rgba(255,255,255,0.60)" },
+  { bg: "#1A1020", text: "#F8B195", sub: "rgba(248,177,149,0.55)" },
+];
 
 export default function Home() {
   const { phases } = getBootcampProgress();
-  const stats = getPhaseStats(phases);
-  const currentPhase = phases.find((p) => p.status === "in_progress");
+  const taskStats = getTaskStats(phases);
 
   return (
-    <div className="mx-auto max-w-4xl px-6 py-20">
+    <div>
+      {/* ── HERO ── */}
+      <section className="mx-auto max-w-5xl px-6 pt-20 pb-16">
+        <p
+          className="font-mono text-xs tracking-[0.18em] uppercase mb-8"
+          style={{ color: "#C06C84" }}
+        >
+          Barcelona · Factorial · TA Operations
+        </p>
 
-      {/* Hero */}
-      <section className="mb-20">
-        <p className="font-[family-name:var(--font-geist-mono)] text-violet-400 text-sm mb-4 tracking-wider">
-          hello, I&apos;m
-        </p>
-        <h1 className="text-5xl font-bold text-zinc-100 mb-4 leading-tight">
-          Lucía Santos
+        <h1
+          className="text-fluid-xl font-bold mb-6 max-w-2xl"
+          style={{ color: "#1A1020" }}
+        >
+          Learning to build AI tools
+          <br />
+          that actually work
+          <br />
+          <span style={{ color: "#F67280" }}>in production.</span>
         </h1>
-        <p className="text-xl text-zinc-300 mb-6 max-w-xl">
-          TA Operations Partner (AI &amp; Product){" "}
-          <span className="text-zinc-500">in progress.</span>
+
+        <p
+          className="text-lg leading-relaxed mb-10 max-w-xl"
+          style={{ color: "#6C5B7B" }}
+        >
+          TA professional at Factorial. Working through a 15-week bootcamp covering
+          web fundamentals, AI APIs, and production patterns. {taskStats.done}/{taskStats.total} tasks done.
         </p>
-        <p className="text-zinc-400 max-w-2xl leading-relaxed text-base">
-          I&apos;m a Tech Talent Acquisition professional at Factorial building
-          the bridge between our TA team&apos;s operational needs and the
-          engineering team that builds our ATS. This portfolio documents
-          everything I build along the way — specs, tools, automations, and AI
-          systems. All real. All in public.
-        </p>
-        <div className="flex items-center gap-4 mt-8">
+
+        <div className="flex flex-wrap items-center gap-3">
           <Link
             href="/bootcamp"
-            className="inline-flex items-center gap-2 bg-violet-500/20 border border-violet-500/40 text-violet-300 px-4 py-2 rounded-lg text-sm font-medium hover:bg-violet-500/30 transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-opacity hover:opacity-80"
+            style={{ backgroundColor: "#355C7D", color: "#FFFFFF" }}
           >
-            view bootcamp →
+            view bootcamp progress →
           </Link>
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 text-zinc-400 px-4 py-2 rounded-lg text-sm font-medium hover:text-zinc-100 transition-colors"
+          <a
+            href="https://github.com/lucialsantos"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-colors"
+            style={{ border: "1.5px solid #F0D5CC", color: "#6C5B7B" }}
           >
-            see projects
-          </Link>
+            github ↗
+          </a>
         </div>
       </section>
 
-      {/* Current phase callout */}
-      {currentPhase && (
-        <section className="mb-20 border border-violet-500/20 rounded-xl p-6 bg-violet-500/5">
-          <p className="font-[family-name:var(--font-geist-mono)] text-violet-400 text-xs mb-3 tracking-wider uppercase">
-            currently working on
-          </p>
-          <h2 className="text-lg font-semibold text-zinc-100 mb-1">
-            {currentPhase.name}
-          </h2>
-          <p className="text-zinc-400 text-sm mb-4">{currentPhase.theme}</p>
-          <div className="flex flex-col gap-2">
-            {currentPhase.projects.map((project) => (
-              <div key={project.name} className="flex items-start gap-3 text-sm">
-                <ProjectDot status={project.status} />
-                <span
-                  className={
-                    project.status === "completed"
-                      ? "text-zinc-500 line-through"
-                      : project.status === "in_progress"
-                      ? "text-zinc-200"
-                      : "text-zinc-500"
-                  }
+      {/* ── PHASE GRID ── */}
+      <section className="mx-auto max-w-5xl px-6 pb-24">
+        <p
+          className="font-mono text-xs tracking-[0.18em] uppercase mb-6"
+          style={{ color: "#C06C84" }}
+        >
+          the program
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {phases.map((phase, index) => {
+            const palette = PHASE_COLORS[index % PHASE_COLORS.length];
+            const isActive = phase.status === "in_progress";
+            const isDone = phase.status === "completed";
+            const totalTasks = phase.projects.flatMap((p) => p.tasks).length;
+            const doneTasks = phase.projects
+              .flatMap((p) => p.tasks)
+              .filter((t) => t.status === "done").length;
+            const totalCourses = phase.projects.flatMap((p) => p.courses).length;
+
+            return (
+              <Link
+                key={phase.id}
+                href={`/bootcamp#${phase.id}`}
+                className="lift rounded-2xl overflow-hidden flex flex-col"
+                style={{ minHeight: "200px", textDecoration: "none" }}
+              >
+                {/* Card header — colored */}
+                <div
+                  className="px-6 pt-6 pb-5 flex-1"
+                  style={{ backgroundColor: palette.bg }}
                 >
-                  {project.name}
-                </span>
-                {project.url && (
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-violet-400 hover:underline ml-1"
+                  <div className="flex items-start justify-between mb-3">
+                    <span
+                      className="font-mono text-xs font-bold tabular-nums"
+                      style={{ color: palette.sub }}
+                    >
+                      {String(index).padStart(2, "0")}
+                    </span>
+                    <span
+                      className="font-mono text-xs"
+                      style={{ color: palette.sub }}
+                    >
+                      {phase.duration}
+                    </span>
+                  </div>
+                  <h2
+                    className="text-xl font-bold leading-tight mb-2"
+                    style={{ color: palette.text }}
                   >
-                    ↗
-                  </a>
-                )}
-              </div>
+                    {phase.name}
+                  </h2>
+                  <p
+                    className="text-xs leading-relaxed"
+                    style={{ color: palette.sub }}
+                  >
+                    {phase.theme}
+                  </p>
+                </div>
+
+                {/* Card footer */}
+                <div
+                  className="px-6 py-3 flex items-center justify-between"
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.95)",
+                    borderTop: "1px solid rgba(240,213,204,0.6)",
+                  }}
+                >
+                  {isActive ? (
+                    <span
+                      className="font-mono text-[10px] px-2.5 py-1 rounded-full"
+                      style={{ backgroundColor: "#FDE8E0", color: "#F67280", border: "1px solid rgba(246,114,128,0.3)" }}
+                    >
+                      in progress
+                    </span>
+                  ) : isDone ? (
+                    <span
+                      className="font-mono text-[10px] px-2.5 py-1 rounded-full"
+                      style={{ backgroundColor: "#EBF5F0", color: "#3D8B6E", border: "1px solid rgba(61,139,110,0.3)" }}
+                    >
+                      done
+                    </span>
+                  ) : (
+                    <span
+                      className="font-mono text-[10px]"
+                      style={{ color: "#C06C84", opacity: 0.6 }}
+                    >
+                      not started
+                    </span>
+                  )}
+                  <span
+                    className="font-mono text-[10px]"
+                    style={{ color: "#6C5B7B", opacity: 0.7 }}
+                  >
+                    {totalCourses > 0 && `${totalCourses} course${totalCourses !== 1 ? "s" : ""} · `}{doneTasks}/{totalTasks} tasks
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ── STACK ── */}
+      <section className="py-14" style={{ borderTop: "1px solid #F0D5CC" }}>
+        <div className="mx-auto max-w-5xl px-6">
+          <p
+            className="font-mono text-xs tracking-[0.18em] uppercase mb-5"
+            style={{ color: "#C06C84" }}
+          >
+            stack
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {[
+              "Claude API",
+              "Gemini API",
+              "React",
+              "Next.js",
+              "TypeScript",
+              "Supabase",
+              "n8n",
+              "Vercel",
+              "Notion API",
+              "Cursor",
+            ].map((tool) => (
+              <span
+                key={tool}
+                className="font-mono text-xs px-3 py-1.5 rounded-full"
+                style={{ border: "1.5px solid #F0D5CC", color: "#6C5B7B" }}
+              >
+                {tool}
+              </span>
             ))}
           </div>
-        </section>
-      )}
-
-      {/* Phase tracker */}
-      <section className="mb-20">
-        <div className="flex items-baseline justify-between mb-6">
-          <h2 className="text-xs font-[family-name:var(--font-geist-mono)] text-zinc-500 tracking-wider uppercase">
-            bootcamp progress
-          </h2>
-          <span className="font-[family-name:var(--font-geist-mono)] text-xs text-zinc-600">
-            {stats.completedProjects}/{stats.totalProjects} projects
-          </span>
-        </div>
-
-        <div className="space-y-1">
-          {phases.map((phase, index) => (
-            <Link
-              key={phase.id}
-              href={`/bootcamp#${phase.id}`}
-              className="flex items-center gap-4 group py-3 px-4 rounded-lg hover:bg-zinc-900 transition-colors"
-            >
-              <span className="font-[family-name:var(--font-geist-mono)] text-xs text-zinc-700 w-5 shrink-0">
-                {String(index).padStart(2, "0")}
-              </span>
-              <div className="flex-1 min-w-0">
-                <span
-                  className={`text-sm font-medium ${
-                    phase.status === "not_started"
-                      ? "text-zinc-500"
-                      : phase.status === "in_progress"
-                      ? "text-zinc-100"
-                      : "text-zinc-300"
-                  }`}
-                >
-                  {phase.name}
-                </span>
-                <p className="text-xs text-zinc-600 mt-0.5 truncate">
-                  {phase.theme}
-                </p>
-              </div>
-              <div className="flex items-center gap-3 shrink-0">
-                <span className="font-[family-name:var(--font-geist-mono)] text-xs text-zinc-700">
-                  {phase.duration}
-                </span>
-                <PhaseBadge status={phase.status} />
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Stack */}
-      <section>
-        <h2 className="text-xs font-[family-name:var(--font-geist-mono)] text-zinc-500 tracking-wider uppercase mb-4">
-          built with
-        </h2>
-        <div className="flex flex-wrap gap-2">
-          {[
-            "Next.js", "TypeScript", "Tailwind CSS", "Vercel",
-            "Gemini API", "Supabase", "n8n", "Cursor", "Claude",
-          ].map((tool) => (
-            <span
-              key={tool}
-              className="font-[family-name:var(--font-geist-mono)] text-xs border border-zinc-800 text-zinc-500 px-3 py-1 rounded-full"
-            >
-              {tool}
-            </span>
-          ))}
         </div>
       </section>
     </div>

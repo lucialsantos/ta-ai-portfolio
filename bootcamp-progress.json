@@ -1,158 +1,350 @@
 {
   "phases": [
     {
-      "id": "week-0",
-      "name": "Launch Pad",
-      "theme": "Build the portfolio site, learn git",
-      "status": "in_progress",
+      "id": "phase-0",
+      "name": "Foundation",
+      "theme": "Dev environment, Git workflow, first deployment",
+      "status": "completed",
       "duration": "1 week",
-      "startedAt": "2026-04-09",
+      "startedAt": null,
       "completedAt": null,
-      "mindsetShift": "From consumer to creator — the first thing I ship is the place where everything else will live.",
       "projects": [
         {
-          "name": "Portfolio Site",
-          "description": "Next.js portfolio deployed on Vercel — the foundation for everything.",
-          "status": "in_progress",
-          "url": null
+          "name": "Portfolio site",
+          "description": "Next.js site deployed on Vercel. Public bootcamp tracker.",
+          "status": "completed",
+          "url": null,
+          "courses": [
+            {
+              "name": "Foundations",
+              "provider": "The Odin Project",
+              "url": "https://www.theodinproject.com/paths/foundations/courses/foundations",
+              "free": true,
+              "completed": true
+            },
+            {
+              "name": "CS50x — Weeks 0 & 1",
+              "provider": "Harvard / edX",
+              "url": "https://cs50.harvard.edu/x/",
+              "free": true,
+              "completed": true
+            }
+          ],
+          "tasks": [
+            {
+              "id": "p0-t1",
+              "name": "Set up GitHub account and first repo",
+              "description": "Create account, init repo, push first commit via SSH",
+              "status": "done"
+            },
+            {
+              "id": "p0-t2",
+              "name": "Configure local dev environment",
+              "description": "Node, VS Code / Cursor, Git configured with SSH key",
+              "status": "done"
+            },
+            {
+              "id": "p0-t3",
+              "name": "Deploy first page on Vercel",
+              "description": "Live public URL, auto-deploys on git push",
+              "status": "done"
+            },
+            {
+              "id": "p0-t4",
+              "name": "Daily commit habit",
+              "description": "Every session ends with a push. No exceptions.",
+              "status": "done"
+            }
+          ]
         }
       ]
     },
     {
       "id": "phase-1",
-      "name": "The Language of Production",
-      "theme": "Specs, user stories, PRDs — writing things engineers actually build from",
-      "status": "not_started",
+      "name": "Spec Quality",
+      "theme": "Writing specs that survive engineering scrutiny — handoff documents, not portfolio pieces",
+      "status": "completed",
       "duration": "3 weeks",
       "startedAt": null,
       "completedAt": null,
-      "mindsetShift": "My clarity is the product. A spec is a contract between someone who understands the problem and someone who will solve it.",
       "projects": [
         {
-          "name": "AI-Powered CV Screening — Feature Spec",
-          "description": "Full spec for adding AI candidate screening to Factorial's ATS. User stories, acceptance criteria, edge cases.",
-          "status": "not_started",
-          "url": null
-        },
-        {
-          "name": "Interview Scheduling 2.0 — PRD",
-          "description": "One-page PRD for improving scheduling in the ATS. Problem, options, recommendation, success metrics.",
-          "status": "not_started",
-          "url": null
-        },
-        {
-          "name": "Talent Pool Revival — Integration Spec",
-          "description": "Spec for re-engaging 3+ year old candidates against current open roles. Data model, matching logic, GDPR constraints.",
-          "status": "not_started",
-          "url": null
+          "name": "Talent Pool Revival — full engineering spec",
+          "description": "Data model, matching logic, re-engagement UX, GDPR constraints, acceptance criteria, edge cases. Good enough to put in front of Engineering.",
+          "status": "completed",
+          "url": null,
+          "courses": [
+            {
+              "name": "Software Requirements Specification",
+              "provider": "Coursera (University of Alberta)",
+              "url": "https://www.coursera.org/learn/software-requirements-specification",
+              "free": true,
+              "completed": true
+            },
+            {
+              "name": "API Fundamentals Student Expert",
+              "provider": "Postman Academy",
+              "url": "https://academy.postman.com/path/api-fundamentals-student-expert",
+              "free": true,
+              "completed": true
+            }
+          ],
+          "tasks": [
+            {
+              "id": "p1-t1",
+              "name": "Write full engineering spec for Talent Pool Revival",
+              "description": "Data model, API endpoints needed, UX flows, GDPR constraints, acceptance criteria",
+              "status": "done"
+            },
+            {
+              "id": "p1-t2",
+              "name": "Write TARA v2 PRD",
+              "description": "What the Engineering team would need to build and own it — data model, failure states, GDPR scope",
+              "status": "done"
+            },
+            {
+              "id": "p1-t3",
+              "name": "Send one spec to an engineer for review",
+              "description": "Ask one question: what is the first thing missing? Use the answer to rewrite.",
+              "status": "done"
+            }
+          ]
         }
       ]
     },
     {
       "id": "phase-2",
-      "name": "First AI Tools",
-      "theme": "Prompt engineering + deployed AI applications",
-      "status": "not_started",
+      "name": "What's Underneath",
+      "theme": "API depth — rate limits, error states, data contracts, not just happy paths",
+      "status": "completed",
       "duration": "3 weeks",
       "startedAt": null,
       "completedAt": null,
-      "mindsetShift": "I don't need to understand every line of code. I need to understand what I'm building, why, and how to direct AI to build it with me.",
       "projects": [
         {
-          "name": "JD Bias Detector",
-          "description": "Paste a job description → get analysis of biased language, gendered terms, and improvement suggestions.",
-          "status": "not_started",
-          "url": null
-        },
-        {
-          "name": "CV + JD Matcher",
-          "description": "Paste a CV and a JD → get a match score (0–100) with gaps and strengths explained.",
-          "status": "not_started",
-          "url": null
-        },
-        {
-          "name": "Interview Question Generator",
-          "description": "Input role + seniority + key skills → structured interview questions tailored to the role.",
-          "status": "not_started",
-          "url": null
+          "name": "Claude API audit + Greenhouse deep-dive",
+          "description": "What are the actual rate limits, error states, token costs? What data does Greenhouse actually expose?",
+          "status": "completed",
+          "url": null,
+          "courses": [
+            {
+              "name": "Claude API Quickstart",
+              "provider": "Anthropic Docs",
+              "url": "https://docs.anthropic.com/en/docs/quickstart",
+              "free": true,
+              "completed": true
+            },
+            {
+              "name": "ChatGPT Prompt Engineering for Developers",
+              "provider": "DeepLearning.AI",
+              "url": "https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/",
+              "free": true,
+              "completed": true
+            },
+            {
+              "name": "API Test Automation",
+              "provider": "Postman Academy",
+              "url": "https://academy.postman.com/path/api-testing-foundations",
+              "free": true,
+              "completed": true
+            }
+          ],
+          "tasks": [
+            {
+              "id": "p2-t1",
+              "name": "Claude API audit document",
+              "description": "Rate limits, token counting, streaming failure modes, cost at scale for TARA",
+              "status": "done"
+            },
+            {
+              "id": "p2-t2",
+              "name": "Greenhouse ATS — Postman collection",
+              "description": "Document what fields actually exist, what's missing vs. what the Talent Pool spec assumes",
+              "status": "done"
+            },
+            {
+              "id": "p2-t3",
+              "name": "Webhook architecture diagram",
+              "description": "Full event flow: application → screening → interview → decision. Every system, every trigger, every failure state.",
+              "status": "done"
+            }
+          ]
         }
       ]
     },
     {
       "id": "phase-3",
-      "name": "The Plumbing Layer",
-      "theme": "APIs, webhooks, and how systems talk to each other",
-      "status": "not_started",
+      "name": "Demo → Production",
+      "theme": "Error handling, logging, GDPR basics — making tools survive real use",
+      "status": "completed",
       "duration": "3 weeks",
       "startedAt": null,
       "completedAt": null,
-      "mindsetShift": "I don't need to build the API. I need to understand it well enough to spec integrations engineers can build — and to recognize when a trade-off should matter to me.",
       "projects": [
         {
-          "name": "ATS API Explorer",
-          "description": "Postman deep-dive into Greenhouse ATS sandbox API. Documented findings: what data lives in an ATS, what's missing.",
-          "status": "not_started",
-          "url": null
-        },
-        {
-          "name": "Candidate Journey — Webhook Architecture",
-          "description": "System diagram: candidate applies → auto-email → TA notified if qualified → hiring manager weekly digest.",
-          "status": "not_started",
-          "url": null
-        },
-        {
-          "name": "n8n Automation: Final Round Trigger",
-          "description": "When candidate moves to Final Round → calendar hold created → Slack message sent to TA coordinator.",
-          "status": "not_started",
-          "url": null
+          "name": "TARA — hardened for production",
+          "description": "Add error states, logging, and GDPR review to the existing tool. Plus first real n8n automation.",
+          "status": "completed",
+          "url": null,
+          "courses": [
+            {
+              "name": "AI SDK — Getting Started",
+              "provider": "Vercel Docs",
+              "url": "https://sdk.vercel.ai/docs/getting-started",
+              "free": true,
+              "completed": true
+            },
+            {
+              "name": "Node.js Error Handling Guide",
+              "provider": "Node.js Docs",
+              "url": "https://nodejs.org/en/docs/guides/error-handling",
+              "free": true,
+              "completed": true
+            },
+            {
+              "name": "n8n Quickstart",
+              "provider": "n8n Docs",
+              "url": "https://docs.n8n.io/try-it-out/",
+              "free": true,
+              "completed": true
+            }
+          ],
+          "tasks": [
+            {
+              "id": "p3-t1",
+              "name": "Add error states for every failure mode",
+              "description": "API down, empty response, timeout, out-of-scope query — all handled with user-facing messages",
+              "status": "done"
+            },
+            {
+              "id": "p3-t2",
+              "name": "Add basic request logging",
+              "description": "Request in, response out, errors — all written to logs with timestamps",
+              "status": "done"
+            },
+            {
+              "id": "p3-t3",
+              "name": "GDPR audit of existing tools",
+              "description": "What employee data is handled, where it goes, how long it lives, what Legal would flag",
+              "status": "done"
+            },
+            {
+              "id": "p3-t4",
+              "name": "n8n automation — Final Round trigger",
+              "description": "ATS stage change → calendar hold + Slack notification. Document webhook logic and failure handling.",
+              "status": "done"
+            }
+          ]
         }
       ]
     },
     {
       "id": "phase-4",
-      "name": "Agents & RAG",
-      "theme": "AI that knows things — retrieval-augmented generation and multi-step agents",
-      "status": "not_started",
+      "name": "Real RAG",
+      "theme": "Vector search, embeddings, Supabase pgvector — semantic retrieval over real documents",
+      "status": "in_progress",
       "duration": "3 weeks",
       "startedAt": null,
       "completedAt": null,
-      "mindsetShift": "AI without context is guessing. AI with the right context is leverage.",
       "projects": [
         {
-          "name": "TA Handbook Assistant",
-          "description": "RAG chatbot that answers questions about a TA handbook. Built with Vercel AI SDK + Supabase vector store.",
-          "status": "not_started",
-          "url": null
-        },
-        {
-          "name": "Candidate Screener Agent",
-          "description": "Multi-step agent: takes a JD → reads CVs → scores each → writes recruiter recommendation.",
-          "status": "not_started",
-          "url": null
-        },
-        {
-          "name": "Human-in-the-Loop Design",
-          "description": "Human review gate for the candidate screener. Spec + UI design for the approval step.",
-          "status": "not_started",
-          "url": null
+          "name": "TARA v2 — vector store + Candidate Screener",
+          "description": "Replace Notion lookup with pgvector embeddings. Then build multi-step screener agent.",
+          "status": "in_progress",
+          "url": null,
+          "courses": [
+            {
+              "name": "LangChain for LLM Application Development",
+              "provider": "DeepLearning.AI",
+              "url": "https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/",
+              "free": true,
+              "completed": false
+            },
+            {
+              "name": "Vector Columns with pgvector",
+              "provider": "Supabase Docs",
+              "url": "https://supabase.com/docs/guides/database/extensions/pgvector",
+              "free": true,
+              "completed": false
+            },
+            {
+              "name": "Building AI Agents in LangGraph",
+              "provider": "DeepLearning.AI",
+              "url": "https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/",
+              "free": true,
+              "completed": false
+            }
+          ],
+          "tasks": [
+            {
+              "id": "p4-t1",
+              "name": "Set up Supabase with pgvector",
+              "description": "Enable extension, create embeddings table with correct schema",
+              "status": "not_started"
+            },
+            {
+              "id": "p4-t2",
+              "name": "Replace TARA's Notion lookup with vector search",
+              "description": "Chunk documents, embed each chunk, store in pgvector, query by semantic similarity",
+              "status": "not_started"
+            },
+            {
+              "id": "p4-t3",
+              "name": "Build Candidate Screener agent",
+              "description": "Multi-step: takes JD → reads CVs → scores each → writes recruiter recommendation. Uses tool calling.",
+              "status": "not_started"
+            },
+            {
+              "id": "p4-t4",
+              "name": "Human-in-the-loop design doc",
+              "description": "Where should AI stop and a human decide? Design the approval gate. What does the recruiter see? What can they override?",
+              "status": "not_started"
+            }
+          ]
         }
       ]
     },
     {
       "id": "phase-5",
-      "name": "The Capstone",
-      "theme": "Build one complete product",
+      "name": "The Handoff",
+      "theme": "Ship one complete product with everything an Engineering team needs to build and own it",
       "status": "not_started",
       "duration": "2 weeks",
       "startedAt": null,
       "completedAt": null,
-      "mindsetShift": "This is mine. I specced it, I built it, I can demo it in three minutes.",
       "projects": [
         {
-          "name": "TA AI Assistant v1.0",
-          "description": "Full product: input a JD + upload CVs → match scores + gap analysis + draft outreach for top candidate. Deployed on Vercel.",
+          "name": "TA AI Assistant v1.0 — full engineering package",
+          "description": "JD input + CV upload → match scores + gap analysis + draft outreach. PRD, user stories, acceptance criteria, API spec, data model, error states, GDPR notes, demo.",
           "status": "not_started",
-          "url": null
+          "url": null,
+          "courses": [],
+          "tasks": [
+            {
+              "id": "p5-t1",
+              "name": "Complete README",
+              "description": "What it does, how to run it, API keys needed, known limitations, architecture overview",
+              "status": "not_started"
+            },
+            {
+              "id": "p5-t2",
+              "name": "Record demo video",
+              "description": "Under 3 minutes, screen recording, narrated walkthrough of the full flow",
+              "status": "not_started"
+            },
+            {
+              "id": "p5-t3",
+              "name": "Publish LinkedIn post",
+              "description": "What you built, what you learned, link to live tool and GitHub repo",
+              "status": "not_started"
+            },
+            {
+              "id": "p5-t4",
+              "name": "Full engineering package",
+              "description": "PRD, user stories, acceptance criteria, API spec, data model, error states, GDPR notes — everything an engineer needs to pick it up on Monday",
+              "status": "not_started"
+            }
+          ]
         }
       ]
     }
